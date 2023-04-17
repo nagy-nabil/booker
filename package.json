@@ -14,8 +14,28 @@
   "contributes": {
     "commands": [
       {
-        "command": "booker.helloWorld",
-        "title": "Hello World"
+        "command": "booker.mark.append",
+        "title": "append position"
+      },
+      {
+        "command": "booker.mark.jump",
+        "title": "jump to saved position"
+      },
+      {
+        "command": "booker.marks.show",
+        "title": "show all marked files"
+      },
+      {
+        "command": "booker.mark.jump-fir",
+        "title": "jump to first mark"
+      },
+      {
+        "command": "booker.mark.jump-sec",
+        "title": "jump to second mark"
+      },
+      {
+        "command": "booker.mark.jump-thrd",
+        "title": "jump to third mark"
       }
     ]
   },
