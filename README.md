@@ -1,24 +1,36 @@
-# booker README
+# Booker
 
-This is the README for your extension "booker". After writing up a brief description, we recommend including the following sections.
+## WIP
 
-## TODOS
-
-- [ ] delete mark
-- [ ] ORDER MARKS
-- [ ] figure out when to change saved position for the mark
-- [ ] figure out how to use vscode datastorge to store information for the extension per workspace
-- [ ] search can we make generic commands like for example send index with the command(deal with the command as function)
+extension inspired by [ThePrimeagen/harpoon](https://github.com/ThePrimeagen/harpoon), it gives you the ability to mark files to move between them blazingly fast, so simply move between files with the lsp then return to the important ones -without fuzzy finder- again blazingly fast!
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- marks per workspace
 
-For example if there is an image subfolder under your extension project workspace:
+- mark active file `booker.mark.add`
 
-\!\[feature X\]\(images/feature-x.png\)
+- remove the mark from active file `booker.mark.remove`
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- show all marked files through vscode quickPick `booker.mark.show`
+
+- hard coded jumps
+
+  - jump to file at index 0 `booker.mark.jump1`
+
+  - jump to file at index 0 `booker.mark.jump2`
+
+  - jump to file at index 0 `booker.mark.jump3`
+
+## TODOS
+
+- [x] delete mark
+
+- [ ] user should be able to reoreder the marks through some UI
+
+- [x] figure out how to use vscode datastorge to store information for the extension per workspace
+
+- [ ] global marks
 
 ## Requirements
 
@@ -26,14 +38,30 @@ If you have any requirements or dependencies, add a section describing those and
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### vscodevim keybindings example
 
-For example:
-
-This extension contributes the following settings:
-
-- `myExtension.enable`: Enable/disable this extension.
-- `myExtension.thing`: Set to `blah` to do something.
+  ```json
+        {
+            "before": ["<leader>", "a"],
+            "commands": ["booker.mark.add"]
+        },
+        {
+            "before": ["<leader>", "r"],
+            "commands": ["booker.mark.remove"]
+        },
+        {
+            "before": ["<leader>", "1"],
+            "commands": ["booker.mark.jump1"]
+        },
+        {
+            "before": ["<leader>", "2"],
+            "commands": ["booker.mark.jump2"]
+        },
+        {
+            "before": ["<leader>", "3"],
+            "commands": ["booker.mark.jump3"]
+        }
+  ```
 
 ## Known Issues
 

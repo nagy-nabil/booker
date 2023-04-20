@@ -1,8 +1,13 @@
 {
   "name": "booker",
   "displayName": "booker",
-  "description": "move FAST",
+  "description": "move between files in vscode BLAZINGLY FAST",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nagy-nabil/booker"
+  },
+  "publisher": "nagy-nabil",
   "engines": {
     "vscode": "^1.77.0"
   },
@@ -14,28 +19,32 @@
   "contributes": {
     "commands": [
       {
-        "command": "booker.mark.append",
-        "title": "append position"
+        "command": "booker.mark.add",
+        "title": "booker: add mark at current active editor"
       },
       {
-        "command": "booker.mark.jump",
-        "title": "jump to saved position"
+        "command": "booker.mark.remove",
+        "title": "booker: remove mark from current active editor"
       },
       {
-        "command": "booker.marks.show",
-        "title": "show all marked files"
+        "command": "booker.mark.show",
+        "title": "booker: show quick pick for all marked files"
       },
       {
-        "command": "booker.mark.jump-fir",
-        "title": "jump to first mark"
+        "command": "booker.mark.jump1",
+        "title": "booker: jump to first mark"
       },
       {
-        "command": "booker.mark.jump-sec",
-        "title": "jump to second mark"
+        "command": "booker.mark.jump2",
+        "title": "booker: jump to second mark"
       },
       {
-        "command": "booker.mark.jump-thrd",
-        "title": "jump to third mark"
+        "command": "booker.mark.jump3",
+        "title": "booker: jump to third mark"
+      },
+      {
+        "command": "booker.ui.toggle",
+        "title": "booker: show booker ui"
       }
     ]
   },
