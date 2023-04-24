@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { storeKey } from "./config";
 
 /**
- * class that would hold the state for the current workspace, like opened editors[marked] update the state, manage context.workspaceState
+ * class that would hold the state for the current workspace, like opened editors[marked] update the state, manage context.workspaceState, fs store
  */
 export class WorkspaceState {
     // todo is it better to use only map? instead of array and set
@@ -11,9 +11,11 @@ export class WorkspaceState {
     // will be used to fast check marked files so need to be always synced with _editors
     private _editorsSet: Set<string>;
     private _context: vscode.ExtensionContext;
+    private _fsStorgePath: vscode.Uri;
 
-    constructor(context: vscode.ExtensionContext) {
+    constructor(context: vscode.ExtensionContext, fsStoragePath: vscode.Uri) {
         this._context = context;
+        this._fsStorgePath = fsStoragePath;
         // read URIs from context.state then load those uris to TextEditor
         this._vsStore = this._context.workspaceState.get(storeKey) || [];
         this._editors = [];
@@ -39,7 +41,7 @@ export class WorkspaceState {
         this._editors.push(doc);
         this._editorsSet.add(uri.fsPath);
         this._vsStore.push(uri.fsPath);
-        await this.updateWorkspaceStore();
+        await this._updateWorkspaceStore();
     }
 
     async removeMark(uri: vscode.Uri) {
@@ -47,18 +49,26 @@ export class WorkspaceState {
             const index = this._vsStore.findIndex((val) => val === uri.fsPath);
             this._vsStore.splice(index, 1);
         }
-        await this.updateWorkspaceStore();
+        await this._updateWorkspaceStore();
     }
 
     /**
      * update vscode workspace store, to be synced with this._vsStore
      */
-    async updateWorkspaceStore() {
+    private async _updateWorkspaceStore() {
         await this._context.workspaceState.update(storeKey, this._vsStore);
     }
 
+    /**
+     * return list of marks fs path
+     */
     get store(): string[] {
         return this._vsStore;
+    }
+
+    async setstore(newContent: string[]) {
+        this._vsStore = newContent;
+        await this._updateWorkspaceStore();
     }
 
     /**
@@ -71,5 +81,16 @@ export class WorkspaceState {
             await vscode.window.showTextDocument(this._editors[id]);
         }
         return;
+    }
+
+    get fsStoragePath(): vscode.Uri {
+        return this._fsStorgePath;
+    }
+
+    async resetFsStore(): Promise<void> {
+        await vscode.workspace.fs.writeFile(
+            this.fsStoragePath,
+            new Uint8Array()
+        );
     }
 }
