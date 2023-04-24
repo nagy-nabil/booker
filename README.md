@@ -26,17 +26,27 @@ extension inspired by [ThePrimeagen/harpoon](https://github.com/ThePrimeagen/har
 
 - [x] delete mark
 
-- [ ] user should be able to reoreder the marks through some UI
+- [x] user should be able to reoreder the marks through some UI
 
 - [x] figure out how to use vscode datastorge to store information for the extension per workspace
 
 - [ ] global marks
 
-## Requirements
+- [ ] use disposables to remove event listeners when you close the editor
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- [ ] when user close Booker ui editor, remove the file or at least reset it
 
 ## Extension Settings
+
+| Command           | Title                                        | Default Shortcut |
+| ----------------- | -------------------------------------------- | ---------------- |
+| booker.mark.add   | booker: add mark at current active editor    | TBD              |
+| booker.mark.remove| booker: remove mark from current active editor| TBD              |
+| booker.mark.show  | booker: show quick pick for all marked files | TBD              |
+| booker.mark.jump1 | booker: jump to first mark                   | TBD              |
+| booker.mark.jump2 | booker: jump to second mark                  | TBD              |
+| booker.mark.jump3 | booker: jump to third mark                   | TBD              |
+| booker.ui.toggle  | booker: show booker ui                        | TBD              |
 
 ### vscodevim keybindings example
 
