@@ -1,5 +1,3 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import { storgeHandler } from "./utils/fs";
 import { WorkspaceState } from "./workspaceState";
@@ -13,19 +11,12 @@ import { bookerUiToggle } from "./commands/ui.toggle";
 // Your extension is activated the very first time the command is executed
 export async function activate(context: vscode.ExtensionContext) {
     // init fs store
-    let fsStoragePath: vscode.Uri | null = null;
-    if (context.storageUri) {
-        console.log(context.storageUri.fsPath);
-        fsStoragePath = await storgeHandler(
-            vscode.workspace.fs,
-            context.storageUri
-        );
+    if (context.storageUri === undefined) {
+        return;
     }
-
-    if (fsStoragePath === null) {
-        throw new Error(
-            "must have fs path for fs storge here don't know how to handle this"
-        );
+    let fsStoragePath: vscode.Uri = context.storageUri;
+    if (context.storageUri) {
+        await storgeHandler(vscode.workspace.fs, context.storageUri);
     }
 
     // init vs store
