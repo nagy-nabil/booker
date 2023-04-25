@@ -5,7 +5,7 @@ import { bookerMarkShow } from "./commands/mark.show";
 import { bookerMarkAdd } from "./commands/mark.add";
 import { bookerMarkRemove } from "./commands/mark.remove";
 import { bookerMarkJumpI } from "./commands/mark.jump.i";
-import { bookerUiToggle } from "./commands/ui.toggle";
+import { bookerUiShow } from "./commands/ui.show";
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -28,7 +28,7 @@ export async function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(bookerMarkJumpI(workspaceState, 0));
     context.subscriptions.push(bookerMarkJumpI(workspaceState, 1));
     context.subscriptions.push(bookerMarkJumpI(workspaceState, 2));
-    context.subscriptions.push(bookerUiToggle(workspaceState));
+    context.subscriptions.push(bookerUiShow(workspaceState));
 }
 
 // This method is called when your extension is deactivated

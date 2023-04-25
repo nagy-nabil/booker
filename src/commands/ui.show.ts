@@ -80,12 +80,12 @@ function assignListeners(state: WorkspaceState, fsEdirorUri: vscode.Uri): void {
     }
 }
 
-export function bookerUiToggle(state: WorkspaceState): vscode.Disposable {
+export function bookerUiShow(state: WorkspaceState): vscode.Disposable {
     const fsEdirorUri = vscode.Uri.joinPath(
         state.fsStoragePath,
         storageFileName
     );
-    return vscode.commands.registerCommand("booker.ui.toggle", async () => {
+    return vscode.commands.registerCommand("booker.ui.show", async () => {
         await initEditor(state, fsEdirorUri);
         assignListeners(state, fsEdirorUri);
     });
