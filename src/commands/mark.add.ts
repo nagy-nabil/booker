@@ -8,7 +8,6 @@ export function bookerMarkAdd(state: WorkspaceState): vscode.Disposable {
             console.log("no active text editor");
             return;
         }
-        const doc = textEditor.document;
-        await state.addMark(doc, doc.uri);
+        await state.addMark(textEditor.document.uri);
     });
 }

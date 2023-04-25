@@ -3,7 +3,7 @@ import { WorkspaceState } from "../workspaceState";
 
 export function bookerMarkShow(state: WorkspaceState): vscode.Disposable {
     return vscode.commands.registerCommand("booker.mark.show", async () => {
-        const options = state.store.map((val, i) => {
+        const options = state.vsStore.map((val, i) => {
             return `${i + 1} - ${val}`;
         });
 
