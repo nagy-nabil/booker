@@ -8,6 +8,13 @@
     "url": "https://github.com/nagy-nabil/booker"
   },
   "publisher": "nagy-nabil",
+  "author": {
+    "name": "nagy-nabil"
+  },
+  "bugs": {
+    "url": "https://github.com/nagy-nabil/booker/issues"
+  },
+  "icon": "https://github.com/nagy-nabil/booker/assts/logo.jpeg",
   "engines": {
     "vscode": "^1.77.0"
   },
@@ -43,7 +50,7 @@
         "title": "booker: jump to third mark"
       },
       {
-        "command": "booker.ui.toggle",
+        "command": "booker.ui.show",
         "title": "booker: show booker ui"
       }
     ]
