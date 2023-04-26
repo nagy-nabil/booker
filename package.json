@@ -2,7 +2,7 @@
   "name": "booker",
   "displayName": "booker",
   "description": "move between files in vscode BLAZINGLY FAST",
-  "version": "0.99.2",
+  "version": "0.99.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/nagy-nabil/booker"

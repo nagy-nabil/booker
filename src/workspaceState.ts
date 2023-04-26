@@ -75,6 +75,9 @@ export class WorkspaceState {
      * @returns
      */
     async changeEditor(id: number) {
+        if (id >= this._vsStore.length) {
+            return;
+        }
         const doc = await vscode.workspace.openTextDocument(this._vsStore[id]);
         await vscode.window.showTextDocument(doc);
         return;
