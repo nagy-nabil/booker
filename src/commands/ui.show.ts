@@ -38,12 +38,7 @@ function assignListeners(state: WorkspaceState, fsEdirorUri: vscode.Uri): void {
                     tdoc.document
                         .getText()
                         .split("\n")
-                        .filter(
-                            (val) =>
-                                val.startsWith("/") ||
-                                val.startsWith("c:") ||
-                                val.startsWith("C:")
-                        )
+                        .filter((val) => val !== "")
                 );
             }
         }
